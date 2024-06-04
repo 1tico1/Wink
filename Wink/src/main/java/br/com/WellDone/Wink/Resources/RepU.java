@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.WellDone.Wink.Model.Entity.Usuario;
 import br.com.WellDone.Wink.Model.Repository.UsuarioR;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.transaction.Transactional;
 
 @RestController
@@ -30,7 +31,7 @@ public class RepU {
     @Autowired
     private UsuarioR usuarioRepository;
     
-   // @Operation(description = "Este serviço retorna todos os Usuarios", summary = "Retorna todos os Usuarios", tags = "Consulta")
+    @Operation(description = "Este serviço retorna todos os Usuarios", summary = "Retorna todos os Usuarios", tags = "Consulta")
     @GetMapping(value = "/todos")
     public List<Usuario> PesquisarUsuarios() {
         List<Usuario> lista = usuarioRepository.findAll();
@@ -41,7 +42,7 @@ public class RepU {
         return lista;
     } 
 
-   // @Operation(description = "Este serviço retorna Usuarios por id", summary = "Retorna Usuarios por id", tags = "Consulta")
+    @Operation(description = "Este serviço retorna Usuarios por id", summary = "Retorna Usuarios por id", tags = "Consulta")
     @GetMapping(value = "/{id_usuario}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id_usuario) {
         Optional<Usuario> usuario = usuarioRepository.findById(id_usuario);
@@ -62,7 +63,7 @@ public class RepU {
         }
     }
 
-   // @Operation(description = "Este serviço insere Usuarios", summary = "Inerção de usuarios", tags = "Inserção")
+    @Operation(description = "Este serviço insere Usuarios", summary = "Inerção de usuarios", tags = "Inserção")
     @ResponseStatus(CREATED)
     @PostMapping
     public ResponseEntity<Usuario> inserirUsuario(@RequestBody Usuario usuario) {
@@ -70,7 +71,7 @@ public class RepU {
         return ResponseEntity.status(CREATED).body(savedUsuario);
     }
 
-   // @Operation(description = "Este serviço remove Usuarios", summary = "Remoção de usuarios", tags = "Remoção")
+    @Operation(description = "Este serviço remove Usuarios", summary = "Remoção de usuarios", tags = "Remoção")
     @DeleteMapping(value = "/remove_usuario/{id_usuario}")
     public Usuario apagarUsuario(@PathVariable Long id_usuario) {
 
@@ -80,7 +81,7 @@ public class RepU {
 
 	}
 
-   // @Operation(description = "Este serviço atualiza Usuarios", summary = "Atualização de usuarios", tags = "Atualização")
+    @Operation(description = "Este serviço atualiza Usuarios", summary = "Atualização de usuarios", tags = "Atualização")
     @PutMapping(value = "/atualiza_usuario/{id_usuario}")
     @Transactional
     public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id_usuario, @RequestBody Usuario usuarioAtualizado) {

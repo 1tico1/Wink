@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.WellDone.Wink.Model.Entity.Denuncia;
 import br.com.WellDone.Wink.Model.Repository.DenunciaR;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.transaction.Transactional;
 
 @RestController
@@ -31,7 +32,7 @@ public class RepD {
 	@Autowired
 	private DenunciaR denunciaRepository;
 	
-	// @Operation(description = "Este serviço retorna todas as Denuncias", summary = "Retorna todas Denuncias", tags = "Consulta")
+	@Operation(description = "Este serviço retorna todas as Denuncias", summary = "Retorna todas Denuncias", tags = "Consulta")
     @GetMapping(value = "/todos")
     public List<Denuncia> PesquisarDenuncia() {
         List<Denuncia> lista = denunciaRepository.findAll();
@@ -42,7 +43,7 @@ public class RepD {
         return lista;
     } 
     
- // @Operation(description = "Este serviço retorna Denuncias por id", summary = "Retorna Denuncias por id", tags = "Consulta")
+	@Operation(description = "Este serviço retorna Denuncias por id", summary = "Retorna Denuncias por id", tags = "Consulta")
     @GetMapping(value = "/{id_denuncia}")
     public ResponseEntity<Denuncia> findById(@PathVariable Long id_denuncia) {
         Optional<Denuncia> denuncia = denunciaRepository.findById(id_denuncia);
@@ -63,7 +64,7 @@ public class RepD {
         }
     }
     
- // @Operation(description = "Este serviço insere Denuncias", summary = "Inerção de Denuncias", tags = "Inserção")
+	@Operation(description = "Este serviço insere Denuncias", summary = "Inerção de Denuncias", tags = "Inserção")
     @ResponseStatus(CREATED)
     @PostMapping
     public ResponseEntity<Denuncia> inserirDenuncia(@RequestBody Denuncia denuncia) {
@@ -71,7 +72,7 @@ public class RepD {
         return ResponseEntity.status(CREATED).body(saveDenuncia);
     }
 
-   // @Operation(description = "Este serviço remove Denuncias", summary = "Remoção de Denuncias", tags = "Remoção")
+	@Operation(description = "Este serviço remove Denuncias", summary = "Remoção de Denuncias", tags = "Remoção")
     @DeleteMapping(value = "/remove_denuncia/{id_denuncia}")
     public Denuncia apagarDenuncia(@PathVariable Long id_denuncia) {
 
@@ -81,7 +82,7 @@ public class RepD {
 
 	}
     
-    // @Operation(description = "Este serviço atualiza Denuncias", summary = "Atualização de Denuncias", tags = "Atualização")
+    @Operation(description = "Este serviço atualiza Denuncias", summary = "Atualização de Denuncias", tags = "Atualização")
     @PutMapping(value = "/atualiza_denuncia/{id_denuncia}")
     @Transactional
     public ResponseEntity<Denuncia> atualizarDenuncia(@PathVariable Long id_denuncia, @RequestBody Denuncia denunciaAtualizado) {

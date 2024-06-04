@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.WellDone.Wink.Model.Entity.Feedback;
 import br.com.WellDone.Wink.Model.Repository.FeedbackR;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.transaction.Transactional;
 
 @RestController
@@ -30,7 +31,7 @@ public class RepF {
 	@Autowired
     private FeedbackR feedbackRepository;
 	
-	// @Operation(description = "Este serviço retorna todos os Feedbacks", summary = "Retorna todos os Feedbacks", tags = "Consulta")
+	@Operation(description = "Este serviço retorna todos os Feedbacks", summary = "Retorna todos os Feedbacks", tags = "Consulta")
     @GetMapping(value = "/todos")
     public List<Feedback> PesquisarFeedback() {
         List<Feedback> lista = feedbackRepository.findAll();
@@ -41,7 +42,7 @@ public class RepF {
         return lista;
     } 
     
- // @Operation(description = "Este serviço retorna Feedbacks por id", summary = "Retorna Feedbacks por id", tags = "Consulta")
+	@Operation(description = "Este serviço retorna Feedbacks por id", summary = "Retorna Feedbacks por id", tags = "Consulta")
     @GetMapping(value = "/{id_feedback}")
     public ResponseEntity<Feedback> findById(@PathVariable Long id_feedback) {
         Optional<Feedback> feedback = feedbackRepository.findById(id_feedback);
@@ -62,7 +63,8 @@ public class RepF {
         }
     }
     
- // @Operation(description = "Este serviço insere Feedbacks", summary = "Inerção de Feedbacks", tags = "Inserção")
+	
+	@Operation(description = "Este serviço insere Feedbacks", summary = "Inerção de Feedbacks", tags = "Inserção")
     @ResponseStatus(CREATED)
     @PostMapping
     public ResponseEntity<Feedback> inserirFeedback(@RequestBody Feedback feedback) {
@@ -70,7 +72,7 @@ public class RepF {
         return ResponseEntity.status(CREATED).body(saveFeedback);
     }
 
-   // @Operation(description = "Este serviço remove Feedbacks", summary = "Remoção de Feedbacks", tags = "Remoção")
+    @Operation(description = "Este serviço remove Feedbacks", summary = "Remoção de Feedbacks", tags = "Remoção")
     @DeleteMapping(value = "/remove_feedback/{id_feedback}")
     public Feedback apagarFeedback(@PathVariable Long id_feedback) {
 
@@ -80,7 +82,7 @@ public class RepF {
 
 	}
     
-    // @Operation(description = "Este serviço atualiza Usuarios", summary = "Atualização de usuarios", tags = "Atualização")
+    @Operation(description = "Este serviço atualiza Usuarios", summary = "Atualização de usuarios", tags = "Atualização")
     @PutMapping(value = "/atualiza_feedback/{id_feedback}")
     @Transactional
     public ResponseEntity<Feedback> atualizarFeedback(@PathVariable Long id_feedback, @RequestBody Feedback feedbackAtualizado) {

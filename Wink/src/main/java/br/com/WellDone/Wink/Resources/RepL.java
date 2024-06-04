@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
 import br.com.WellDone.Wink.Model.Entity.Logs_Erros;
 import br.com.WellDone.Wink.Model.Repository.LogsR;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.transaction.Transactional;
 
 @RestController
@@ -29,7 +31,7 @@ public class RepL {
 	@Autowired
 	private LogsR logsRepository;
 	
-	// @Operation(description = "Este serviço retorna todos os Logs de Erros", summary = "Retorna todos os Logs de Erros", tags = "Consulta")
+	@Operation(description = "Este serviço retorna todos os Logs de Erros", summary = "Retorna todos os Logs de Erros", tags = "Consulta")
     @GetMapping(value = "/todos")
     public List<Logs_Erros> PesquisarLogs() {
         List<Logs_Erros> lista = logsRepository.findAll();
@@ -40,7 +42,7 @@ public class RepL {
         return lista;
     } 
     
- // @Operation(description = "Este serviço retorna Logs por id", summary = "Retorna Logs por id", tags = "Consulta")
+    @Operation(description = "Este serviço retorna Logs por id", summary = "Retorna Logs por id", tags = "Consulta")
     @GetMapping(value = "/{id_log}")
     public ResponseEntity<Logs_Erros> findById(@PathVariable Long id_log) {
         Optional<Logs_Erros> logs_erros = logsRepository.findById(id_log);
@@ -64,7 +66,7 @@ public class RepL {
     
     
     
- // @Operation(description = "Este serviço insere os Logs", summary = "Inerção de Logs", tags = "Inserção")
+    @Operation(description = "Este serviço insere os Logs", summary = "Inerção de Logs", tags = "Inserção")
     @ResponseStatus(CREATED)
     @PostMapping
     public ResponseEntity<Logs_Erros> inserirLogs(@RequestBody Logs_Erros logs_erros) {
@@ -72,7 +74,7 @@ public class RepL {
         return ResponseEntity.status(CREATED).body(saveLogs_Erros);
     }
 
-   // @Operation(description = "Este serviço remove Logs", summary = "Remoção de Logs", tags = "Remoção")
+    @Operation(description = "Este serviço remove Logs", summary = "Remoção de Logs", tags = "Remoção")
     @DeleteMapping(value = "/remove_logs/{id_log}")
     public Logs_Erros apagarLogs(@PathVariable Long id_log) {
 
@@ -82,7 +84,7 @@ public class RepL {
 
 	}
     
- // @Operation(description = "Este serviço atualiza Logs", summary = "Atualização de Logs", tags = "Atualização")
+    @Operation(description = "Este serviço atualiza Logs", summary = "Atualização de Logs", tags = "Atualização")
     @PutMapping(value = "/atualiza_logs/{id_log}")
     @Transactional
     public ResponseEntity<Logs_Erros> atualizarLogs(@PathVariable Long id_log, @RequestBody Logs_Erros logsAtualizado) {
