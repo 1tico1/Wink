@@ -74,6 +74,14 @@ Localhost:8080/index_usuario
 
 --------------------------------------------------
 
+## 📈 Diagrama
+
+<div>
+    <img src="./DiagramJava/ResourcesDiagram.png" alt="Diagrama de classes" height="400px"/>
+</div>
+<div>
+    <img src="./DiagramJava/EntityDiagram.png" alt="Diagrama de classes" height="400px"/>
+</div>
 
 
 <br/>
