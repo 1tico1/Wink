@@ -36,7 +36,7 @@ public class RepU {
         List<Usuario> lista = usuarioRepository.findAll();
         for (Usuario i : lista) {
             i.add(linkTo(methodOn(RepU.class).findById(i.getId_usuario()))
-                    .withRel("deseja consultar a pessoa por ID? Acesse este link: "));
+                    .withRel("deseja ver as informações deste usuario? Acesse este link: "));
         }
         return lista;
     } 
@@ -51,11 +51,11 @@ public class RepU {
             u1.add(linkTo(methodOn(RepU.class).PesquisarUsuarios())
                     .withRel("deseja consultar todos Usuarios? Acesse este link: "));
             u1.add(linkTo(methodOn(RepU.class).inserirUsuario(null))
-                    .withRel("deseja inserir um cliente? Acesse este link: "));
+                    .withRel("deseja inserir um usuario? Acesse este link: "));
             u1.add(linkTo(methodOn(RepU.class).atualizarUsuario(id_usuario, null))
-                    .withRel("deseja atualizar um cliente? Acesse este link: "));
+                    .withRel("deseja atualizar um usuario? Acesse este link: "));
             u1.add(linkTo(methodOn(RepU.class).apagarUsuario(id_usuario))
-                    .withRel("deseja deletar um cliente? Acesse este link: "));
+                    .withRel("deseja deletar um usuario? Acesse este link: "));
             return ResponseEntity.ok(u1);
         } else {
             return ResponseEntity.notFound().build();

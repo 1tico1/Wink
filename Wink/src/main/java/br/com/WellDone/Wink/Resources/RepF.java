@@ -36,7 +36,7 @@ public class RepF {
         List<Feedback> lista = feedbackRepository.findAll();
         for (Feedback i : lista) {
             i.add(linkTo(methodOn(RepF.class).findById(i.getId_feedback()))
-                    .withRel("deseja consultar a pessoa por ID? Acesse este link: "));
+                    .withRel("deseja ver melhor as informações deste Feedback? Acesse este link: "));
         }
         return lista;
     } 
@@ -49,13 +49,13 @@ public class RepF {
         if (feedback.isPresent()) {
         	Feedback feed = feedback.get();
         	feed.add(linkTo(methodOn(RepF.class).PesquisarFeedback())
-                    .withRel("deseja consultar todos Usuarios? Acesse este link: "));
+                    .withRel("deseja consultar todos Feedbacks? Acesse este link: "));
         	feed.add(linkTo(methodOn(RepF.class).inserirFeedback(null))
-                    .withRel("deseja inserir um cliente? Acesse este link: "));
+                    .withRel("deseja inserir um Feedback? Acesse este link: "));
         	feed.add(linkTo(methodOn(RepF.class).atualizarFeedback(id_feedback, null))
-                    .withRel("deseja atualizar um cliente? Acesse este link: "));
+                    .withRel("deseja atualizar um Feedback? Acesse este link: "));
         	feed.add(linkTo(methodOn(RepF.class).apagarFeedback(id_feedback))
-                    .withRel("deseja deletar um cliente? Acesse este link: "));
+                    .withRel("deseja deletar um Feedback? Acesse este link: "));
             return ResponseEntity.ok(feed);
         } else {
             return ResponseEntity.notFound().build();
