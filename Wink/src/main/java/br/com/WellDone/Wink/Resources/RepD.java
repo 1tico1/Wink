@@ -63,7 +63,7 @@ public class RepD {
         }
     }
     
- // @Operation(description = "Este serviço insere Feedbacks", summary = "Inerção de Feedbacks", tags = "Inserção")
+ // @Operation(description = "Este serviço insere Denuncias", summary = "Inerção de Denuncias", tags = "Inserção")
     @ResponseStatus(CREATED)
     @PostMapping
     public ResponseEntity<Denuncia> inserirDenuncia(@RequestBody Denuncia denuncia) {
