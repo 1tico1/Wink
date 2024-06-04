@@ -39,8 +39,11 @@
 ```bash
 git clone https://github.com/1tico1/Wink.git
 ```
-<h4>Tabela de EndPoints(Localhost:8080/index_)</h4> 
+<h3>Rodar este link para acessar Pagina principal do Swagger</h3>
 
+- http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+
+<h4>Tabela de EndPoints(Localhost:8080/index_)</h4> 
 
 Localhost:8080/index_usuario
   - FindAll (/todos)
