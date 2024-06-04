@@ -26,7 +26,7 @@ public class Feedback extends RepresentationModel<Feedback>{
 	private Long id_feedback;
 	
 	@ManyToOne
-    @JoinColumn(name = "denuncia_id_cliente") 
+    @JoinColumn(name = "feedback_id_cliente") 
 	private Usuario id_usuario;
 	
 	
